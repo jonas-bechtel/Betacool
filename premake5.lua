@@ -9,7 +9,7 @@ project "Betacool"
 
     files 
     { 
-        "src/**.cc", 
+        "src/**.cpp", 
         "src/**.h"
     }
 
