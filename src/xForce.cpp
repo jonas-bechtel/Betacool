@@ -1,5 +1,3 @@
-//---------------------------------------------------------------------------
-//#include "stdafx.h"
 #include "xForce.h"
 
 xFrParam::xFrParam()
@@ -29,8 +27,6 @@ xFrParam::xFrParam()
     V_und._(m_ / s_);
 }
 
-
-//---------------------------------------------------------------------------
 xForce::xForce()
 {
    type = 0; //type of friction force formula
@@ -51,131 +47,7 @@ xForce::xForce()
       f[i]._(eV_ / m_);
    }
 }
-//----------------------------------
-//int xForce::OnGet()
-//{
-//   type = Data.OnGetI(60, 1, 3);
-//
-//   Vtr_min = Data.OnGet(62, 1, -1e8);
-//   Vtr_max = Data.OnGet(62, 2, 1e8);
-//   Vlong_min = Data.OnGet(62, 3, -1e8);
-//   Vlong_max = Data.OnGet(62, 4, 1e8);
-//   div = Data.OnGetI(62, 5, 40);
-//
-//   V_min = Data.OnGet(62, 9, -1e8);
-//   V_max = Data.OnGet(62, 10, 1e8);
-//   Angle = Data.OnGet(62, 11, 0);
-//   div2 = Data.OnGetI(62, 12, 50);
-//
-//   Angle *= U_pi / 180.0;
-//
-//   Velocity = Data.OnGet(62, 14, 1e8);
-//   div3 = Data.OnGetI(62, 15, 50);
-//
-//   Surf = Data.OnGetI(62, 7, 0);
-//   Line = Data.OnGetI(62, 8, 0);
-//   Circle = Data.OnGetI(62, 13, 0);
-//   //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-//   // here changed by GT, 01.02.05
-//
-//   TT_Range1 = Data.OnGet(71, 1, 1000.);
-//   TT_Range2 = Data.OnGet(71, 3, 2000.);
-//   TT_Range3 = Data.OnGet(71, 5, 3000.);
-//   TT_div1 = Data.OnGetI(71, 2, 10);
-//   TT_div2 = Data.OnGetI(71, 4, 10);
-//   TT_div3 = Data.OnGetI(71, 6, 10);
-//
-//   TL_Range1 = Data.OnGet(71, 7, 1000.);
-//   TL_Range2 = Data.OnGet(71, 9, 2000.);
-//   TL_Range3 = Data.OnGet(71, 11, 3000.);
-//   TL_div1 = Data.OnGetI(71, 8, 10);
-//   TL_div2 = Data.OnGetI(71, 10, 10);
-//   TL_div3 = Data.OnGetI(71, 12, 10);
-//
-//   LT_Range1 = Data.OnGet(72, 1, 1000.);
-//   LT_Range2 = Data.OnGet(72, 3, 2000.);
-//   LT_Range3 = Data.OnGet(72, 5, 3000.);
-//   LT_div1 = Data.OnGetI(72, 2, 10);
-//   LT_div2 = Data.OnGetI(72, 4, 10);
-//   LT_div3 = Data.OnGetI(72, 6, 10);
-//
-//   LL_Range1 = Data.OnGet(72, 7, 1000.);
-//   LL_Range2 = Data.OnGet(72, 9, 2000.);
-//   LL_Range3 = Data.OnGet(72, 11, 3000.);
-//   LL_div1 = Data.OnGetI(72, 8, 10);
-//   LL_div2 = Data.OnGetI(72, 10, 10);
-//   LL_div3 = Data.OnGetI(72, 12, 10);
-//
-//   interpolation = Data.OnGetI(73, 1, 0);
-//
-//   FFtr.SetName(Data.OnGetC(70, 1, "table.tvt"));
-//   FFlong.SetName(Data.OnGetC(70, 2, "table.lvt"));
-//   //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-//
-//   //--------01.02.05 ---- Non magnetized force
-//   asimptotic = Data.OnGetI(61, 6, 1);
-//   dl = Data.OnGetI(61, 7, 11);
-//   dt = Data.OnGetI(61, 8, 11);
-//   nfi = Data.OnGetI(61, 9, 11);
-//   smooth = Data.OnGetI(60, 11, 1);
-//   rhomin = Data.OnGetI(60, 12, 1);
-//   rmsplus = Data.OnGetI(60, 13, 1);
-//   Magnetized = true; //Data.OnGetI(60,14,1);
-//   Adiabatic = false; //Data.OnGetI(60,15,1);
-//   Fast = false;      //Data.OnGetI(60,16,1);
-//   Constant = Data.OnGetI(60, 17, 0);
-//   Pestrikov = Data.OnGetI(60, 18, 0);
-//   nfiP = Data.OnGetI(60, 19, 50);
-//   //---------------------------28.11.05---------------------------------------
-//   DelPopolo = Data.OnGetI(60, 20, 0);
-//   q_step = Data.OnGet(60, 22, 0.1);
-//   q_max = Data.OnGet(60, 23, 10.);
-//   //---------------------------28.11.05---------------------------------------
-//   //------------------------------------------
-//   //-----------7.07.05--------D-S force
-//   Mag_As = Data.OnGetI(61, 10, 1);
-//   N_M = Data.OnGetI(61, 12, 21);
-//   //-------------------
-//   // ----- 05.06 ---- Toepffer
-//   Tdl = Data.OnGetI(64, 4, 10);
-//   Tdt = Data.OnGetI(64, 5, 10);
-//   Tnfi = Data.OnGetI(64, 6, 10);
-//   Stretched = Data.OnGetI(64, 3, 1);
-//   Tight = Data.OnGetI(64, 2, 1);
-//   TFast = Data.OnGetI(64, 1, 1);
-//   //   06.07
-//   //   05.06 3D force
-//   D3dl = Data.OnGetI(75, 1, 10);
-//   D3dx = Data.OnGetI(75, 2, 10);
-//   D3dy = Data.OnGetI(75, 3, 10);
-//   From_array = Data.OnGetI(75, 4, 1);
-//   //---------------
-//   FFtr.SetName(Data.OnGetC(63, 8, "table.tvt"));
-//   FFlong.SetName(Data.OnGetC(63, 9, "table.tvt"));
-//
-//   return 0;
-//}
-////----------------------------------
-//int xForce::OnSet()
-//{
-//   //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-//   // here changed by GT, 01.02.05
-//   static bool loaded = true;
-//   if (loaded)
-//   {
-//      loaded = false;
-//      if (type == 5)
-//      {
-//         if (ReadForceFile(Data.OnGetC(70, 1, "table.tvt"), true))
-//            return 1;
-//         if (ReadForceFile(Data.OnGetC(70, 2, "table.lvt"), false))
-//            return 1;
-//      }
-//   }
-//
-//   return 0;
-//}
-//----------------------------------------------------
+
 void xForce::Budker(xFrParam F)
 {
    delta = 4 * U_pi * F.n_e * F.Z * F.Z * (U_e ^ 4) / U_me; //Friction constant
@@ -229,7 +101,6 @@ void xForce::Budker(xFrParam F)
    }
 }
 
-//----------------------------------------------------
 void xForce::NonMag(xFrParam F)
 {
    delta = 4 * U_pi * F.n_e * F.Z * F.Z * (U_e ^ 4) / U_me; //Friction constant
@@ -423,13 +294,11 @@ void xForce::NonMag(xFrParam F)
                         d_x += (Vtr - ((v_t * j) * cos(dfi * l + fi0))) * L_C * (v_t * j) / ((U_rel ^ 1.5) * Maxw);
                         d_s += (v[2] - (v_l * i)) * L_C * (v_t * j) / ((U_rel ^ 1.5) * Maxw);
                         norm += (v_t * j) / Maxw;
-                        //n++;
                      }
                   }
             delta_x = d_x / norm;
             delta_s = d_s / norm;
-            //delta_x = d_x*18/(F.V_tr_e*((2. * U_pi)^0.5)*n);
-            //delta_s = d_s*18/(F.V_tr_e*((2. * U_pi)^0.5)*n);
+           
          }
       }
       //--------------------------------------------29.11.05------------------
@@ -443,7 +312,6 @@ void xForce::NonMag(xFrParam F)
    }
 }
 
-//----------------------------------------------------
 void xForce::DerSkr(xFrParam F)
 {
    delta = 2 * U_pi * F.n_e * F.Z * F.Z * (U_e ^ 4) / U_me; //Friction constant
@@ -768,7 +636,6 @@ void xForce::DerSkr(xFrParam F)
    }
 }
 
-//----------------------------------------------------
 void xForce::Parhom(xFrParam F)
 {
    delta = 4. * F.n_e * F.Z * F.Z * (U_e ^ 4) / U_me; //Friction constant
@@ -834,8 +701,7 @@ void xForce::Parhom(xFrParam F)
       f[2] = 0; // total angle is 0
    }
 }
-//----------------------------------------------------
-//-------------------Toepfer---------------------------------
+
 void xForce::Toepffer(xFrParam F)
 {
    delta = 4 * U_pi * F.n_e * F.Z * F.Z * (U_e ^ 4) / U_me; //Friction constant
@@ -1116,108 +982,6 @@ void xForce::Toepffer(xFrParam F)
       f[2] = 0; // total angle is 0
    }
 }
-//----------------------------------------------------
-// Integration over real coordinates of electrons
-//
-//void xForce::D3(xFrParam F)
-//{
-//
-//   if (From_array == 1)
-//   {
-//      delta = 4 * U_pi * F.n_e * F.Z * F.Z * (U_e ^ 4) / U_me; //Friction constant
-//
-//      doubleU R_max(m_);  // max impact parameter
-//      doubleU R_max1(m_); // for max impact parameter (comparisom)
-//      doubleU R_max2(m_);
-//      doubleU R_min(m_); // min impact parameter
-//
-//      doubleU theta(m_ / s_);   // total ion velocity
-//      doubleU theta_e(m_ / s_); //total electron velocity
-//
-//      doubleU L_C; // Coloumb logarithms
-//
-//      doubleU delta_v[3], delta_d[3][3], v_local[3];
-//      for (int i = 0; i < 3; i++)
-//      {
-//         delta_v[i]._(0, (s_ ^ 2) / (m_ ^ 2));
-//         v_local[i]._(m_ / s_);
-//         for (int j = 0; j < 3; j++)
-//            delta_d[i][j]._(0, s_ / m_);
-//      }
-//      doubleU U_rel((m_ ^ 2) / (s_ ^ 2)); // square of relative velocity
-//
-//      theta = ((v[0] ^ 2) + (v[1] ^ 2) + (v[2] ^ 2)) ^ 0.5;
-//      theta_e = ((F.V_tr_x ^ 2) + (F.V_tr_y ^ 2) + (F.V_long_e ^ 2)) ^ 0.5;
-//
-//      if (theta() > 0.)
-//      {
-//         //maximum impact parameter constant
-//         R_max1 = (3 * F.Z / F.n_e) ^ (1. / 3.);
-//         R_max2 = theta * F.tau;
-//
-//         if (theta > theta_e)
-//            R_max = (theta * theta * U_me / (4 * U_pi * F.n_e * U_e * U_e)) ^ 0.5;
-//         else
-//            R_max = (theta_e * theta_e * U_me / (4 * U_pi * F.n_e * U_e * U_e)) ^ 0.5;
-//
-//         if (R_max < R_max1)
-//            R_max = R_max1; // choose max
-//         if (R_max > R_max2)
-//            R_max = R_max2; // choose min
-//
-//         for (int i = 0; i < iEbeam.Minst.Number; i++)
-//         {
-//            U_rel = 0;
-//            for (int j = 0; j < 3; j++)
-//            {
-//               v_local[j] = iEbeam.Local[iEbeam.Minst[i]][2 * j + 1];
-//               U_rel += (v[j] - v_local[j]) ^ 2;
-//            }
-//            if (U_rel() != 0.0)
-//            {
-//               // minimum impact parameter
-//               R_min = F.Z * U_e * U_e / (U_me * U_rel);
-//               if (F.undulator && R_min < F.r_0)
-//                  R_min = F.r_0;
-//
-//               if (R_max() > R_min())
-//               {
-//                  L_C = U_Ln(R_max / R_min);
-//                  for (int a = 0; a < 3; a++)
-//                  {
-//                     delta_v[a] += (v[a] - v_local[a]) * L_C / (U_rel ^ 1.5);
-//                     /*
-//                  for (int b = 0; b < 3; b++)
-//                  if (a == b)
-//                   delta_d[a][b]+= (U_rel - ((v[a]-v_local[a])*(v[b]-v_local[b])) * L_C)
-//                                 /(U_rel^1.5);
-//                  else
-//                   delta_d[a][b]+=        - ((v[a]-v_local[a])*(v[b]-v_local[b])) * L_C
-//                                 /(U_rel^1.5);
-//                  */
-//                  }
-//               }
-//            }
-//         }
-//         for (int j = 0; j < 3; j++)
-//         {
-//            f[j] = -delta_v[j] * delta / iEbeam.Minst.Number;
-//
-//            //for(int k = 0; k < 3; k++)
-//            //   D[j][k] = delta_d[j][k] * delta * U_me / iEbeam.Minst.Number;
-//         }
-//      }
-//      else
-//      {
-//         for (int j = 0; j < 3; j++)
-//            f[j] = 0;
-//      }
-//   }
-//   else
-//      D4(F);
-//}
-////----------------------------------------------------
-//// Integration with Maxwellian distribution
 
 void xForce::D4(xFrParam F)
 {
@@ -1324,135 +1088,6 @@ void xForce::D4(xFrParam F)
    }
 }
 
-//----------------------------------------------------
-//
-//double xForce::Simple_Interpol(BData &force, double X, double Y)
-//{
-//   int a = 0;
-//   int b = 0;
-//   double res = 0;
-//   //double s;
-//
-//   double X_ = 0;
-//   double Y_ = 0;
-//   X_ = X;
-//   Y_ = Y;
-//
-//   int mX, mY;
-//   mX = force.Row();
-//   mY = force.Col(0);
-//
-//   for (int i = 1; i < mX; i++)
-//   {
-//      //s = force[i][0];
-//      if (X_ >= force[i][0])
-//         a = i;
-//   }
-//   if (a < mX - 1)
-//      if (fabs(X_ - force[a][0]) > fabs(X_ - force[a + 1][0]))
-//         a++;
-//
-//   for (int j = 1; j < mY; j++)
-//      if (Y_ >= force[0][j])
-//         b = j;
-//
-//   if (b < mY - 1)
-//      if (fabs(Y_ - force[0][b]) > fabs(Y_ - force[0][b + 1]))
-//         b++;
-//
-//   //  if ((a >= mX-1)||(b >= mY-1)||(a==0)||(b==0)) return res = 0;
-//
-//   if (a >= mX - 1)
-//      a = mX - 2;
-//   if (b >= mY - 1)
-//      b = mY - 2;
-//   if ((a == 0) || (b == 0))
-//      return res = 0;
-//
-//   res = force[a][b];
-//
-//   return res;
-//}
-////----------------------------------------------------
-//
-//double xForce::Poly_Interpol(BData &force, double X, double Y)
-//{
-//   int a = 0;
-//   int b = 0;
-//   double y1, y2, y3, y4;
-//   double t, u;
-//   double res = 0;
-//
-//   double X_ = 0;
-//   double Y_ = 0;
-//
-//   X_ = X;
-//   Y_ = Y;
-//
-//   int mX, mY;
-//   mX = force.Row();
-//   mY = force.Col(0);
-//
-//   for (int i = 1; i < mX; i++)
-//      if (X_ >= force[i][0])
-//         a = i;
-//
-//   for (int j = 1; j < mY; j++)
-//      if (Y_ >= force[0][j])
-//         b = j;
-//
-//   //    if ((a >= mX-1)||(b >= mY-1)||(a==0)||(b==0)) return res = 0;
-//
-//   if (a >= mX - 1)
-//      return res = 0; //a = mX-2;
-//   if (b >= mY - 1)
-//      return res = 0; //b = mY-2;
-//   if ((a == 0) || (b == 0))
-//      return res = 0;
-//
-//   y1 = force[a][b];
-//   y2 = force[a + 1][b];
-//   y3 = force[a + 1][b + 1];
-//   y4 = force[a][b + 1];
-//
-//   t = (X_ - force[a][0]) / (force[a + 1][0] - force[a][0]);
-//   u = (Y_ - force[0][b]) / (force[0][b + 1] - force[0][b]);
-//
-//   res = (1 - t) * (1 - u) * y1 + t * (1 - u) * y2 + t * u * y3 + (1 - t) * u * y4;
-//
-//   return res;
-//}
-////----------------------------------------------------
-//
-//void xForce::Table(xFrParam F)
-//{
-//   doubleU sigtr = 1;
-//   doubleU siglong = 1;
-//
-//   if (Vtr() < 0)
-//   {
-//      sigtr = -1;
-//      Vtr = U_Abs(Vtr);
-//   }
-//   if (v[2]() < 0)
-//   {
-//      siglong = -1;
-//      v[2] = U_Abs(v[2]);
-//   }
-//   if (interpolation == 0)
-//   {
-//      Ftr = Simple_Interpol(force_transv, Vtr(m_ / s_), v[2](m_ / s_));
-//      f[2] = Simple_Interpol(force_long, Vtr(m_ / s_), v[2](m_ / s_));
-//   }
-//   else
-//   {
-//      Ftr = Poly_Interpol(force_transv, Vtr(m_ / s_), v[2](m_ / s_));
-//      f[2] = Poly_Interpol(force_long, Vtr(m_ / s_), v[2](m_ / s_));
-//   }
-//   Ftr *= sigtr;
-//   f[2] *= siglong;
-//}
-////----------------------------------------------------------------------------
 void xForce::Linear(xFrParam F)
 {
    delta = 2 * U_pi * F.n_e * F.Z * F.Z * (U_e ^ 4) / U_me; //Friction constant
@@ -1594,158 +1229,3 @@ double xForce::phi(double x)
 
    return integ;
 }
-
-//*******************************************************************************
-// for tabulated Friction force (calculated by other programm (for ex.: "Vorpal")
-////*******************************************************************************
-//bool xForce::ReadForceFile(char *filename, bool component) // read fr. force table from file
-//{
-//
-//   BData ForceIn;
-//
-//   if (ForceIn.Load(filename))
-//   {
-//      for (int i = 0; i < ForceIn.Row(); i++) // Remove spaces
-//         for (int j = 0; j < ForceIn.Col(i); j++)
-//            ForceIn[i](j).ch.RemoveChar();
-//
-//      if (component)
-//      {
-//         force_transv.Size(ForceIn.Row(), ForceIn.Col());
-//         for (int k = 0; k < ForceIn.Row(); k++)
-//            for (int l = 0; l < ForceIn.Col(k); l++)
-//               force_transv[k](l) = ForceIn[k](l);
-//      }
-//      else
-//      {
-//         force_long.Size(ForceIn.Row(), ForceIn.Col());
-//         for (int k = 0; k < ForceIn.Row(); k++)
-//            for (int l = 0; l < ForceIn.Col(k); l++)
-//               force_long[k](l) = ForceIn[k](l);
-//      }
-//      return false;
-//   }
-//   else
-//      return true;
-//}
-////***************************************************************
-//// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-//// here changed by GT, 01.02.05
-//
-//void xForce::FF(xTime &time, xEbeam &Ebeam, xRing &ring)
-//{
-//   doubleU E_e(M_6 * eV_ * 0.5110034);
-//   vectorU ion_new(m_, U1_);
-//   int i, j;
-//
-//   ion_new = iEbeam.Ibeam2Ebeam(time, ion_new);
-//   iEbeam.F.V_tr_e = ((iEbeam.F.Ttemp / E_e) ^ 0.5) * U_c;
-//   iEbeam.F.V_long_e = ((iEbeam.F.Ltemp / E_e) ^ 0.5) * U_c;
-//   iEbeam.F.V_eff_e = ((iEbeam.F.TempEff / E_e) ^ 0.5) * U_c;
-//
-//   FFtr.SetXaxis(TT_div1 + TT_div2 + TT_div3 - 1, TT_Range1() / TT_div1, TT_Range3(), 0);
-//   FFtr.SetYaxis(TL_div1 + TL_div2 + TL_div3 - 1, TL_Range1() / TL_div1, TL_Range3(), 0);
-//
-//   FFlong.SetXaxis(LT_div1 + LT_div2 + LT_div3 - 1, LT_Range1() / LT_div1, LT_Range3(), 0);
-//   FFlong.SetYaxis(LL_div1 + LL_div2 + LL_div3 - 1, LL_Range1() / LL_div1, LL_Range3(), 0);
-//
-//   for (i = 1; i <= TT_div1; i++)
-//      FFtr.SetPoint(i, 0, i * TT_Range1() / TT_div1);
-//   for (i = 1; i <= TL_div1; i++)
-//      FFtr.SetPoint(0, i, i * TL_Range1() / TL_div1);
-//   for (i = 1; i <= LT_div1; i++)
-//      FFlong.SetPoint(i, 0, i * LT_Range1() / LT_div1);
-//   for (i = 1; i <= LL_div1; i++)
-//      FFlong.SetPoint(0, i, i * LL_Range1() / LL_div1);
-//
-//   for (i = TT_div1 + 1; i <= TT_div2 + TT_div1; i++)
-//      FFtr.SetPoint(i, 0, TT_Range1() + (i - TT_div1) * (TT_Range2 - TT_Range1)() / TT_div2);
-//   for (i = TL_div1 + 1; i <= TL_div2 + TL_div1; i++)
-//      FFtr.SetPoint(0, i, TL_Range1() + (i - TL_div1) * (TL_Range2 - TL_Range1)() / TL_div2);
-//   for (i = LT_div1 + 1; i <= LT_div2 + LT_div1; i++)
-//      FFlong.SetPoint(i, 0, LT_Range1() + (i - LT_div1) * (LT_Range2 - LT_Range1)() / LT_div2);
-//   for (i = LL_div1 + 1; i <= LL_div2 + LL_div1; i++)
-//      FFlong.SetPoint(0, i, LL_Range1() + (i - LL_div1) * (LL_Range2 - LL_Range1)() / LL_div2);
-//
-//   for (i = TT_div1 + TT_div2 + 1; i < TT_div3 + TT_div2 + TT_div1; i++)
-//      FFtr.SetPoint(i, 0, TT_Range2() + (i - TT_div1 - TT_div2) * (TT_Range3 - TT_Range2)() / TT_div3);
-//   for (i = TL_div1 + TL_div2 + 1; i < TL_div3 + TL_div2 + TL_div1; i++)
-//      FFtr.SetPoint(0, i, TL_Range2() + (i - TL_div1 - TL_div2) * (TL_Range3 - TL_Range2)() / TL_div3);
-//   for (i = LT_div1 + LT_div2 + 1; i < LT_div3 + LT_div2 + LT_div1; i++)
-//      FFlong.SetPoint(i, 0, LT_Range2() + (i - LT_div1 - LT_div2) * (LT_Range3 - LT_Range2)() / LT_div3);
-//   for (i = LL_div1 + LL_div2 + 1; i < LL_div3 + LL_div2 + LL_div1; i++)
-//      FFlong.SetPoint(0, i, LL_Range2() + (i - LL_div1 - LL_div2) * (LL_Range3 - LL_Range2)() / LL_div3);
-//
-//   // For transverse force component
-//
-//   for (i = 1; i < TT_div1 + TT_div2 + TT_div3 + 1; i++)
-//      for (j = 1; j < TL_div1 + TL_div2 + TL_div3 + 1; j++)
-//      {
-//         //     Vtr =     FFtr.GetPoint(0, j);
-//         //     v[2] =   FFtr.GetPoint(i, 0);
-//         Vtr = FFtr.GetPoint(i, 0);
-//         v[2] = FFtr.GetPoint(0, j);
-//
-//         switch (type)
-//         {
-//         case 0:
-//            iForce.Budker(iEbeam.F);
-//            break;
-//         case 1:
-//            iForce.NonMag(iEbeam.F);
-//            break;
-//         case 2:
-//            iForce.DerSkr(iEbeam.F);
-//            break;
-//         case 3:
-//            iForce.Parhom(iEbeam.F);
-//            break;
-//         case 4:
-//            iForce.Toepffer(iEbeam.F);
-//            break;
-//         default:
-//            Warning("Choose other Model of Friction Force");
-//         }
-//
-//         FFtr.SetPoint(i, j, Ftr(eV_ / m_));
-//         //     FFlong.SetPoint(j, i, f[2](eV_/m_));
-//      }
-//
-//   // For longitudinal force component
-//
-//   for (i = 1; i < LT_div1 + LT_div2 + LT_div3 + 1; i++)    // i - is increment over V_long
-//      for (j = 1; j < LL_div1 + LL_div2 + LL_div3 + 1; j++) // j - is increment over V_tr
-//      {
-//         //     Vtr =   FFlong.GetPoint(0, j);
-//         //     v[2] = FFlong.GetPoint(i, 0);
-//         Vtr = FFlong.GetPoint(i, 0);
-//         v[2] = FFlong.GetPoint(0, j);
-//
-//         switch (type)
-//         {
-//         case 0:
-//            iForce.Budker(iEbeam.F);
-//            break;
-//         case 1:
-//            iForce.NonMag(iEbeam.F);
-//            break;
-//         case 2:
-//            iForce.DerSkr(iEbeam.F);
-//            break;
-//         case 3:
-//            iForce.Parhom(iEbeam.F);
-//            break;
-//         case 4:
-//            iForce.Toepffer(iEbeam.F);
-//            break;
-//         default:
-//            Warning("Choose other Model of Friction Force");
-//         }
-//
-//         //     FFtr.SetPoint(j, i, Ftr(eV_/m_));
-//         FFlong.SetPoint(i, j, f[2](eV_ / m_));
-//      }
-//
-//   FFtr.Save();
-//   FFlong.Save();
-//}

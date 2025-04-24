@@ -1,7 +1,5 @@
-//---------------------------------------------------------------------------
 #ifndef xForceH
 #define xForceH
-//#include "xDynamic.h"
 #include "doubleU.h"
 
 class xFrParam
@@ -37,16 +35,13 @@ public:
 	doubleU V_und;   //Coherent rotation velocity
 };
 
-//class xEcool;
-//---------------------------------------------------------------------------
-class xForce //: public xData
+
+class xForce 
 {
 public:
    int type;           // type of FrForce formula
    doubleU delta;      // Friction force constant
-   //BData force_transv; // array for transverse force data
-  // BData force_long;   // array for longitudinal force data
-
+ 
    xForce();
 
    doubleU Vtr;     // transverse ion velocities in PRF
@@ -60,11 +55,9 @@ public:
    void DerSkr(xFrParam);   // Derbenev-Skrinsky-Meshkov model for friction force of ecool
    void Parhom(xFrParam);   // Parkhomchuk model for friction force of ecool
    void Toepffer(xFrParam); // Toepffer model for friction force
-   //void D3(xFrParam);       // 3D model
    // 06.07
    void D4(xFrParam); // 3D analyrical model
-   //
-  // void Table(xFrParam);  // tabulated values of calculated friction force (by another program)
+   
    void Linear(xFrParam); // Linear model for friction force of ecool
    double phi_f(double);  //Functions for Budker's formula calculation
    double Erf(double);    // parameter of error integral
@@ -72,9 +65,6 @@ public:
 
    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
    // here changed by GT, 01.02.05
-
-   //xSurf FFtr;   // 3D plot for transverse friction force of electron cooling effect
-   //xSurf FFlong; // 3D plot for longitudinal friction force of electron cooling effect
 
    // for tr. component of tr. force
    doubleU TT_Range1, TT_Range2, TT_Range3;
@@ -132,21 +122,11 @@ public:
    int D3dx;       //Nuber of integration steps over horizontal velocity
    int D3dy;       //Nuber of integration steps vertical velocity
    int From_array; //Switch from analytical
-   // --------------
-  // int OnGet();
-   //int OnSet();
-
-  // bool ReadForceFile(char *filename, bool);                 // read tabulated friction force values from file
-  // double Simple_Interpol(BData &force, double X, double Y); // simple interpolation of the table
-   //double Poly_Interpol(BData &force, double X, double Y);   // polynomial interpolation of the table
-   //void FF(xTime &, xEbeam &, xRing &);
-
+   
    int Surf, Line, Circle;                              //draw 3-D force and line
    doubleU Vtr_min, Vtr_max, Vlong_min, Vlong_max, div; // minimum and maximum values for transverse and long. velocities (for fr.force plotting)
    doubleU V_min, V_max, Angle, div2;                   // minimum and maximum velocity values, angle and div number
    doubleU Velocity, div3;
 };
-
-//extern xForce iForce;
 
 #endif
