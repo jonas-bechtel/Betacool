@@ -5,7 +5,7 @@
 #ifndef doubleUH
 #define doubleUH
 #include <math.h>
-#include "warning.h"
+//#include "warning.h"
 #ifndef M_PI
 #define M_PI (3.141592653589793)
 #endif
@@ -192,7 +192,7 @@ public:
    bool Set(U_EnergyEnum, double, Units_);
 };
 
-extern int ExpKick;
+//extern int ExpKick;
 
 //---------------------------------------------------------------------------
 #endif

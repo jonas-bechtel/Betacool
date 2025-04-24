@@ -9,8 +9,10 @@ project "Betacool"
 
     files 
     { 
-        "src/**.cpp", 
-        "src/**.h"
+        "src/doubleU.cpp", 
+        "src/doubleU.h",
+        "src/xForce.cpp", 
+        "src/xForce.h"
     }
 
     filter "configurations:Debug"

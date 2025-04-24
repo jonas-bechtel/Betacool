@@ -1,9 +1,11 @@
 //---------------------------------------------------------------------------
-#include "stdafx.h"
+//#include "stdafx.h"
 #define _CRT_SECURE_NO_WARNINGS
 #include "doubleU.h"
 #include <stdlib.h>
+#include <iostream>  
 
+#define Warning(x) std::cout << x << std::endl;
 int ExpKick = 0;
 
 //---------------------------------------------------------------------------
