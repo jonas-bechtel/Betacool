@@ -5,7 +5,15 @@
 #include <stdlib.h>
 #include <iostream>  
 
-#define Warning(x) std::cout << x << std::endl;
+//#define Warning(x) std::cout << x << std::endl;
+
+template <class... Args>
+inline void warning_impl(Args&&... args)
+{
+    (std::cout << ... << std::forward<Args>(args)) << std::endl;
+}
+#define Warning(...) warning_impl(__VA_ARGS__)
+
 int ExpKick = 0;
 
 //---------------------------------------------------------------------------
